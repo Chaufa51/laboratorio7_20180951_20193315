@@ -13,7 +13,9 @@
     </title>
     <style>
         body {
-            background-color: #131212
+            background-image: url('https://thumbs.dreamstime.com/b/muchas-pelotas-de-f%C3%BAtbol-para-fondo-o-representaci%C3%B3n-en-d-pancarta-realista-bola-248286182.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
         }
 
         .container {
@@ -22,13 +24,13 @@
         }
 
         .titlecolor {
-            background: linear-gradient(0deg, #1d1d1d 0%, #525252 100%);
+            background: linear-gradient(0deg, #1d1d1d 0%, rgba(215, 179, 107, 0.94) 100%);
         }
 
         .navbar {
             padding-left: 20px !important;
             padding-right: 20px !important;
-            background-color: rgb(29 185 84 / 94%) !important;
+            background-color: rgba(215, 179, 107, 0.94) !important;
         }
 
         .table-transparent {
