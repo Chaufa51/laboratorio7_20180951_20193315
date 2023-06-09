@@ -22,22 +22,24 @@ public class JugadoresDaos extends BaseDaos {
              ResultSet rs = stmt.executeQuery(sql);){
 
             while (rs.next()){
-                Jugador jugador = new Jugador();
-                jugador.setIdJugador(rs.getInt(1));
-                jugador.setNombre(rs.getString(2));
-                jugador.setEdad(rs.getInt(3));
-                jugador.setPosicion(rs.getString(4));
-                jugador.setClub(rs.getString(5));
 
-                Seleccion seleccion = new Seleccion();
-                seleccion.setIdSeleccion(rs.getInt("s.idSeleccion"));
-                seleccion.setNombre(rs.getString("nombre"));
-                jugador.setSeleccion(seleccion);
+                int id = rs.getInt(1);
+                String nombre = rs.getString(2);
+                int edad = rs.getInt(3);
+                String posicion = rs.getString(4);
+                String club = rs.getString(5);
+
+                int idSeleccion =rs.getInt("s.idSeleccion");
+                String nombreSeleccion = rs.getString("nombre");
+                Seleccion seleccion = new Seleccion(idSeleccion,nombreSeleccion);
+                Jugador jugador = new Jugador(id,nombre,edad,posicion,club,seleccion);
+
                 listaJugadores.add(jugador);
             }
             rs.close();
             stmt.close();
             conn.close();
+
         }catch (SQLException ex){
             ex.printStackTrace();
         }

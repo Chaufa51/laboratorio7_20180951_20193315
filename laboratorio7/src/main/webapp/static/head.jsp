@@ -24,13 +24,13 @@
         }
 
         .titlecolor {
-            background: linear-gradient(0deg, #1d1d1d 0%, rgba(215, 179, 107, 0.94) 100%);
+            background: linear-gradient(0deg, rgba(215, 179, 107, 0.94) 0%, rgba(115, 77, 6, 0.94) 100%);
         }
 
         .navbar {
             padding-left: 20px !important;
             padding-right: 20px !important;
-            background-color: rgba(215, 179, 107, 0.94) !important;
+            background-color: rgba(115, 77, 6, 0.94) !important;
         }
 
         .table-transparent {
@@ -38,7 +38,7 @@
         }
 
         .tabla {
-            background-color: #1d1d1d;
+            background-color: rgba(215, 179, 107, 0.94);
             padding-left: 30px;
             padding-right: 30px;
         }

@@ -22,10 +22,10 @@ public class JugadoresServlet extends HttpServlet {
 
         JugadoresDaos jugadoresDaos = new JugadoresDaos();
 
-        String action = request.getParameter("a") == null ? "listar" : request.getParameter("a");
+        String action = request.getParameter("a") == null ? "listarJugadores" : request.getParameter("a");
 
         switch (action){
-            case "listar":
+            case "listarJugadores":
                 request.setAttribute("listarJugadores",jugadoresDaos.listarJugadores());
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("listaJugadores.jsp");
                 requestDispatcher.forward(request,response);
