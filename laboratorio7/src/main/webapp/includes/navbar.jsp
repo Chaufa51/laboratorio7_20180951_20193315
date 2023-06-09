@@ -14,11 +14,11 @@
         <ul class="navbar-nav">
 
             <li class="nav-item">
-                <a class="nav-link <%=request.getParameter("page").equals("jugadores")? "active": "" %>" href="<%=request.getContextPath()%>/listaFavoritos">Jugadores</a>
+                <a class="nav-link <%=request.getParameter("page").equals("jugadores")? "active": "" %>" href="<%=request.getContextPath()%>/listarJugadores">Jugadores</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link <%=request.getParameter("page").equals("selecciones")? "active": "" %>" href="<%=request.getContextPath()%>/listaTours">Selecciones</a>
+                <a class="nav-link <%=request.getParameter("page").equals("selecciones")? "active": "" %>" href="<%=request.getContextPath()%>/???">Selecciones</a>
             </li>
         </ul>
     </div>

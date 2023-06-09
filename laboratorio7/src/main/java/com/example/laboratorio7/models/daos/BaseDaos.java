@@ -11,6 +11,8 @@ public abstract class BaseDaos {
         }catch (ClassNotFoundException ex){
             throw new RuntimeException(ex);
         }
+
+
         String user = "root";
         String pass = "root";
         String url = "jdbc:mysql://localhost:3306/lab7?serverTimezone=America/Lima";
