@@ -1,10 +1,10 @@
 package com.example.laboratorio7.models.beans;
 
-public class partido {
+public class Partido {
     private int idPartido;
-    private seleccion local;
-    private seleccion visitante;
-    private arbitro arbitro;
+    private Seleccion local;
+    private Seleccion visitante;
+    private Arbitro arbitro;
     private String fecha;
     private int numeroJornada;
 
@@ -18,27 +18,27 @@ public class partido {
         this.idPartido = idPartido;
     }
 
-    public seleccion getLocal() {
+    public Seleccion getLocal() {
         return local;
     }
 
-    public void setLocal(seleccion local) {
+    public void setLocal(Seleccion local) {
         this.local = local;
     }
 
-    public seleccion getVisitante() {
+    public Seleccion getVisitante() {
         return visitante;
     }
 
-    public void setVisitante(seleccion visitante) {
+    public void setVisitante(Seleccion visitante) {
         this.visitante = visitante;
     }
 
-    public com.example.laboratorio7.models.beans.arbitro getArbitro() {
+    public Arbitro getArbitro() {
         return arbitro;
     }
 
-    public void setArbitro(com.example.laboratorio7.models.beans.arbitro arbitro) {
+    public void setArbitro(Arbitro arbitro) {
         this.arbitro = arbitro;
     }
 
@@ -60,7 +60,7 @@ public class partido {
 
     //constructores
 
-    public partido(int idPartido, seleccion local, seleccion visitante, com.example.laboratorio7.models.beans.arbitro arbitro, String fecha, int numeroJornada) {
+    public Partido(int idPartido, Seleccion local, Seleccion visitante, Arbitro arbitro, String fecha, int numeroJornada) {
         this.idPartido = idPartido;
         this.local = local;
         this.visitante = visitante;

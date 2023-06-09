@@ -1,6 +1,6 @@
 package com.example.laboratorio7.models.beans;
 
-public class arbitro {
+public class Arbitro {
 
     private int idArbitro;
     private String nombre;
@@ -36,7 +36,7 @@ public class arbitro {
     //constructores
 
 
-    public arbitro(int idArbitro, String nombre, String pais) {
+    public Arbitro(int idArbitro, String nombre, String pais) {
         this.idArbitro = idArbitro;
         this.nombre = nombre;
         this.pais = pais;

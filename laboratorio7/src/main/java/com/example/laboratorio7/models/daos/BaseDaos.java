@@ -2,14 +2,14 @@ package com.example.laboratorio7.models.daos;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.DriverManager;
-public abstract class baseDaos {
+public abstract class BaseDaos {
 
     public Connection getConnection() throws SQLException{
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
 
         }catch (ClassNotFoundException ex){
-            ex.printStackTrace();
+            throw new RuntimeException(ex);
         }
         String user = "root";
         String pass = "root";

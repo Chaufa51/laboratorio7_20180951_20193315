@@ -1,4 +1,4 @@
 package com.example.laboratorio7.controllers;
 
-public class seleccionesServlet{
+public class SeleccionesServlet {
 }

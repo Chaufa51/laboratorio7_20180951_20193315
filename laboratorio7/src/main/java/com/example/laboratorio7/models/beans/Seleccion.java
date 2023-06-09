@@ -1,11 +1,11 @@
 package com.example.laboratorio7.models.beans;
 
-public class seleccion {
+public class Seleccion {
 
     private int idSeleccion;
     private String nombre;
     private String tecnico;
-    private estadio estadio;
+    private Estadio estadio;
 
     //getters and setters
 
@@ -34,18 +34,18 @@ public class seleccion {
         this.tecnico = tecnico;
     }
 
-    public com.example.laboratorio7.models.beans.estadio getEstadio() {
+    public Estadio getEstadio() {
         return estadio;
     }
 
-    public void setEstadio(com.example.laboratorio7.models.beans.estadio estadio) {
+    public void setEstadio(Estadio estadio) {
         this.estadio = estadio;
     }
 
     //constructores
 
 
-    public seleccion(int idSeleccion, String nombre, String tecnico, com.example.laboratorio7.models.beans.estadio estadio) {
+    public Seleccion(int idSeleccion, String nombre, String tecnico, Estadio estadio) {
         this.idSeleccion = idSeleccion;
         this.nombre = nombre;
         this.tecnico = tecnico;
