@@ -12,7 +12,7 @@
             </jsp:include>
             <div class="pb-5 pt-4 px-3 titlecolor d-flex justify-content-between align-items-center">
                 <div class="col-lg-6">
-                    <h1 class='text-light'>Bienvenido, este es un ejemplo de tabla:</h1>
+                    <h1 class='text-light'>El camino a la clasificacion  sera largo ...</h1>
                 </div>
             </div>
             <div class="tabla">
