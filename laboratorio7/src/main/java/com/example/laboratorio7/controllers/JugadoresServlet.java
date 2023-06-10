@@ -43,7 +43,39 @@ public class JugadoresServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        JugadoresDaos jugadoresDaos = new JugadoresDaos();
 
+        Jugador jugador = parseJugador(request);
+
+        jugadoresDaos.nuevoJugador(jugador);
+        response.sendRedirect(request.getContextPath() + "/listarJugadores");
+
+        }
+
+
+    public Jugador parseJugador(HttpServletRequest request){
+        Jugador jugador = new Jugador();
+        String nombre = request.getParameter("nombre");
+        String edadString = request.getParameter("edad");
+        String posicion = request.getParameter("posicion");
+        String club = request.getParameter("club");
+        String seleccionString = request.getParameter("selecciones");
+
+        try{
+            int edad = Integer.parseInt(edadString);
+            int seleccion =Integer.parseInt(seleccionString);
+
+            jugador.setNombre(nombre);
+            jugador.setEdad(edad);
+            jugador.setPosicion(posicion);
+            jugador.setClub(club);
+            jugador.setIdSeleccion(seleccion);
+
+            return jugador;
+
+        }catch (NullPointerException ex){
+            return null; // validamos que la edad sea un numero
+        }
 
     }
 }
