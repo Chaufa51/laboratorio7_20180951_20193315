@@ -47,13 +47,16 @@ public class JugadoresServlet extends HttpServlet {
 
         Jugador jugador = parseJugador(request);
         boolean noContinuar = true;
-        /*
+        /* SIN VALIDAR
         jugadoresDaos.nuevoJugador(jugador);
         response.sendRedirect(request.getContextPath() + "/listarJugadores");*/
 
+        // validacion completa
         if(jugador != null){
             for(Jugador nuevoJugador : jugadoresDaos.listarJugadores()){
-                if((jugador.getNombre().equals(nuevoJugador.getNombre())) || jugador.getNombre().isEmpty() || jugador.getPosicion().isEmpty() || jugador.getClub().isEmpty()){
+                if ((jugador.getNombre().equals(nuevoJugador.getNombre())) && ((jugador.getIdSeleccion()) == (nuevoJugador.getIdSeleccion()))){
+                    noContinuar=false;
+                } else if (jugador.getNombre().isEmpty() || jugador.getPosicion().isEmpty() || jugador.getClub().isEmpty()) {
                     noContinuar=false;
                 }
             }

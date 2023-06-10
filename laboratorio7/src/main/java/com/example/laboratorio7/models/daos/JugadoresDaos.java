@@ -26,7 +26,7 @@ public class JugadoresDaos extends BaseDaos {
                 jugador.setEdad(rs.getInt(3));
                 jugador.setPosicion(rs.getString(4));
                 jugador.setClub(rs.getString(5));
-
+                jugador.setIdSeleccion(rs.getInt(6)); // nos ayudara en la validacion
                 Seleccion seleccion = new Seleccion();
                 seleccion.setIdSeleccion(rs.getInt(7));
                 seleccion.setNombre(rs.getString(8));
