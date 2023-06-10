@@ -14,7 +14,13 @@
                 <div class="col-lg-6">
                     <h1 class='text-light'>Lista de Jugadores</h1>
                 </div>
+
+                <div class="col-lg-6">
+                    <a class="btn btn-warning" href="<%=request.getContextPath()%>/">Agregar Nuevos Jugadores</a>
+                </div>
             </div>
+
+
             <div class="tabla">
                 <table class="table table-dark table-transparent table-hover">
                     <thead>

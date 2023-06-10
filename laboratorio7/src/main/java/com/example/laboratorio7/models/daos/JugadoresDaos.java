@@ -3,10 +3,7 @@ package com.example.laboratorio7.models.daos;
 import com.example.laboratorio7.models.beans.Jugador;
 import com.example.laboratorio7.models.beans.Seleccion;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class JugadoresDaos extends BaseDaos {
@@ -44,6 +41,27 @@ public class JugadoresDaos extends BaseDaos {
             ex.printStackTrace();
         }
         return listaJugadores;
+    }
+
+    ////// guardar un nuevo jugador
+
+    public void nuevoJugador(Jugador jugador){
+        String sql ="INSERT into jugador (nombre,edad,posicion,club,sn_idSeleccion)"+
+                "values (?,?,?,?,?)";
+
+        try(Connection connection = getConnection();
+            PreparedStatement pstmt = connection.prepareStatement(sql)){
+
+            pstmt.setString(1,jugador.getNombre());
+            pstmt.setInt(2,jugador.getEdad());
+            pstmt.setString(3,jugador.getPosicion());
+            pstmt.setString(4,jugador.getClub());
+            // pstmt.setInt(5,jugador.getSeleccion());
+
+        }
+        catch (SQLException ex){
+            throw new RuntimeException(ex);
+        }
     }
 
 }

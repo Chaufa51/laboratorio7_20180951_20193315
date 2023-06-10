@@ -15,95 +15,12 @@
                     <h1 class='text-light'>El camino a la clasificacion  sera largo ...</h1>
                 </div>
             </div>
-            <div class="tabla">
-                <table class="table table-dark table-transparent table-hover">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>NOMBRE</th>
-                            <th>ROL</th>
-                            <th>CORREO</th>
-                        </tr>
-                    </thead>
 
-                    <tbody>
-                        <tr>
-                            <td>1
-                            </td>
-                            <td>Stuardo Lucho
-                            </td>
-                            <td>Profesor
-                            </td>
-                            <td>stuardo.lucho@pucp.edu.pe
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>2
-                            </td>
-                            <td>Oscar Diaz
-                            </td>
-                            <td>JP
-                            </td>
-                            <td>diaz.oa@pucp.edu.pe
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>3
-                            </td>
-                            <td>Mario Gustavo
-                            </td>
-                            <td>JP
-                            </td>
-                            <td>a2015@pucp.edu.pe
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>4
-                            </td>
-                            <td>Rodrigo Adauto
-                            </td>
-                            <td>JP
-                            </td>
-                            <td>a20160679@pucp.edu.pe
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4
-                            </td>
-                            <td>Álvaro Burga
-                            </td>
-                            <td>JP
-                            </td>
-                            <td>a20160679@pucp.edu.pe
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4
-                            </td>
-                            <td>Josué López
-                            </td>
-                            <td>JP
-                            </td>
-                            <td>a20160679@pucp.edu.pe
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4
-                            </td>
-                            <td> Alejandro Macedo
-                            </td>
-                            <td>JP
-                            </td>
-                            <td>a20160679@pucp.edu.pe
-                            </td>
-                        </tr>
-
-                    </tbody>
-                </table>
+            <div class="text-center">
+                <img src="https://hiraoka.com.pe/media/mageplaza/blog/post/m/u/mundial_2026-cuando_es-donde_se_juega-_clasificatorias-_sedes_.jpg" width="1100" class="rounded" alt="...">
             </div>
+
+
         </div>
         <jsp:include page="/static/scripts.jsp"/>
     </body>

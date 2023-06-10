@@ -1,6 +1,6 @@
-<%@ page import="models.Beans.Tour" %>
+<%@ page import="com.example.laboratorio7.models.beans.Seleccion" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean type="java.util.ArrayList<models.Beans.Tour>" scope="request" id="listaTours"/>
+<jsp:useBean type="java.util.ArrayList<com.example.laboratorio7.models.beans.Seleccion>" scope="request" id="listaTours"/>
 <html>
     <jsp:include page="/static/head.jsp">
         <jsp:param name="title" value="Lista de Tours"/>
