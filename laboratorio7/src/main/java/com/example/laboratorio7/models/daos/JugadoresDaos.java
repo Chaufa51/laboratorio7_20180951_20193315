@@ -53,7 +53,9 @@ public class JugadoresDaos extends BaseDaos {
             pstmt.setInt(2,jugador.getEdad());
             pstmt.setString(3,jugador.getPosicion());
             pstmt.setString(4,jugador.getClub());
-            // pstmt.setInt(5,jugador.getSeleccion());
+            pstmt.setInt(5,jugador.getIdSeleccion());
+
+            pstmt.executeUpdate();
 
         }
         catch (SQLException ex){

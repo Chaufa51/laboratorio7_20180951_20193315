@@ -16,7 +16,7 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <a class="btn btn-warning" href="<%=request.getContextPath()%>/">Agregar Nuevos Jugadores</a>
+                    <a class="btn btn-warning" href="<%=request.getContextPath()%>/listarJugadores?a=agregarJugador">Agregar Nuevos Jugadores</a>
                 </div>
             </div>
 

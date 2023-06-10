@@ -29,13 +29,21 @@ public class JugadoresServlet extends HttpServlet {
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("Jugador/listaJugadores.jsp");
                 requestDispatcher.forward(request,response);
                 break;
+
+            case "agregarJugador":
+                SeleccionesDaos seleccionesDaos = new SeleccionesDaos();
+
+                request.setAttribute("lista",seleccionesDaos.listaSeleccion());
+                request.getRequestDispatcher("Jugador/jugadorNuevo.jsp").forward(request, response);
         }
+
 
     }
 
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 
     }
 }
