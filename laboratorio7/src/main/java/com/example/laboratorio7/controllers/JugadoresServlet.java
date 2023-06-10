@@ -46,9 +46,26 @@ public class JugadoresServlet extends HttpServlet {
         JugadoresDaos jugadoresDaos = new JugadoresDaos();
 
         Jugador jugador = parseJugador(request);
-
+        boolean noContinuar = true;
+        /*
         jugadoresDaos.nuevoJugador(jugador);
-        response.sendRedirect(request.getContextPath() + "/listarJugadores");
+        response.sendRedirect(request.getContextPath() + "/listarJugadores");*/
+
+        if(jugador != null){
+            for(Jugador nuevoJugador : jugadoresDaos.listarJugadores()){
+                if((jugador.getNombre().equals(nuevoJugador.getNombre()))){
+                    noContinuar=false;
+                }
+            }
+            if(noContinuar){
+                jugadoresDaos.nuevoJugador(jugador);
+                response.sendRedirect(request.getContextPath() + "/listarJugadores");
+            }else{
+                response.sendRedirect(request.getContextPath() + "/listarJugadores?a=agregarJugador");
+            }
+        }else{
+            response.sendRedirect(request.getContextPath() + "/listarJugadores?a=agregarJugador");
+        }
 
         }
 
@@ -73,7 +90,7 @@ public class JugadoresServlet extends HttpServlet {
 
             return jugador;
 
-        }catch (NullPointerException ex){
+        }catch (NumberFormatException ex){
             return null; // validamos que la edad sea un numero
         }
 
