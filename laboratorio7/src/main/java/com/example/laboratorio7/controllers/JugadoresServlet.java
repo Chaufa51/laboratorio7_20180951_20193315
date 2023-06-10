@@ -6,10 +6,8 @@ import com.example.laboratorio7.models.daos.JugadoresDaos;
 import com.example.laboratorio7.models.daos.SeleccionesDaos;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.annotation.*;
+import jakarta.servlet.http.*;
 
 import java.io.IOException;
 
@@ -26,7 +24,8 @@ public class JugadoresServlet extends HttpServlet {
 
         switch (action){
             case "listarJugadores":
-                request.setAttribute("lista",jugadoresDaos.listarJugadores());
+                request.setAttribute("listarJugadores",jugadoresDaos.listarJugadores());
+
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("Jugador/listaJugadores.jsp");
                 requestDispatcher.forward(request,response);
                 break;

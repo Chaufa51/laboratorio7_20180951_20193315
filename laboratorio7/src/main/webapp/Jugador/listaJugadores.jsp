@@ -45,8 +45,6 @@
                         </td>
                         <td><%=j.getSeleccion().getNombre()%>
                         </td>
-
-
                     </tr>
                     <%
                         }

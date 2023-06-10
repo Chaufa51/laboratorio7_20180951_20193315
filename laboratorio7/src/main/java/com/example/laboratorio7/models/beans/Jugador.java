@@ -60,13 +60,4 @@ public class Jugador {
 
     //constructores
 
-
-    public Jugador(int idJugador, String nombre, int edad, String posicion, String club, Seleccion seleccion) {
-        this.idJugador = idJugador;
-        this.nombre = nombre;
-        this.edad = edad;
-        this.posicion = posicion;
-        this.club = club;
-        this.seleccion = seleccion;
-    }
 }

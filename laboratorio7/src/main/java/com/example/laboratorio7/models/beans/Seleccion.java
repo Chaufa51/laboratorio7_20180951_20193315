@@ -44,10 +44,5 @@ public class Seleccion {
 
     //constructores
 
-    public Seleccion(int idSeleccion, String nombre) {
-        this.idSeleccion = idSeleccion;
-        this.nombre = nombre;
-        this.tecnico = tecnico;
-        this.estadio = estadio;
-    }
+
 }
