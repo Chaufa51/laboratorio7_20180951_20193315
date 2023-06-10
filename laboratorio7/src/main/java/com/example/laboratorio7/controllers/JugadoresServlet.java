@@ -53,7 +53,7 @@ public class JugadoresServlet extends HttpServlet {
 
         if(jugador != null){
             for(Jugador nuevoJugador : jugadoresDaos.listarJugadores()){
-                if((jugador.getNombre().equals(nuevoJugador.getNombre()))){
+                if((jugador.getNombre().equals(nuevoJugador.getNombre())) || jugador.getNombre().isEmpty() || jugador.getPosicion().isEmpty() || jugador.getClub().isEmpty()){
                     noContinuar=false;
                 }
             }
