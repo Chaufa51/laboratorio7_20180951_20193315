@@ -10,10 +10,11 @@ public class JugadoresDaos extends BaseDaos {
 
     public ArrayList<Jugador> listarJugadores(){
 
-        ArrayList<Jugador> listaJugadores = new ArrayList<>();
+        ArrayList<Jugador> lista = new ArrayList<>();
 
-        String sql="select * from jugador j" +
+        String sql="select * from jugador j\n" +
                 "left join seleccion s on j.sn_idSeleccion = s.idSeleccion";
+
         try (Connection conn = this.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)){
@@ -30,13 +31,13 @@ public class JugadoresDaos extends BaseDaos {
                 seleccion.setIdSeleccion(rs.getInt(7));
                 seleccion.setNombre(rs.getString(8));
                 jugador.setSeleccion(seleccion);
-                listaJugadores.add(jugador);
+                lista.add(jugador);
             }
 
-        }catch (SQLException ex){
+        } catch (SQLException ex){
             ex.printStackTrace();
         }
-        return listaJugadores;
+        return  lista;
     }
 
     ////// guardar un nuevo jugador

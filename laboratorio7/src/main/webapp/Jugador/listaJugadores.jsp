@@ -1,6 +1,6 @@
 <%@ page import="com.example.laboratorio7.models.beans.Jugador" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean type="java.util.ArrayList<com.example.laboratorio7.models.beans.Jugador>" scope="request" id="listarJugadores"/>
+<jsp:useBean type="java.util.ArrayList<com.example.laboratorio7.models.beans.Jugador>" scope="request" id="lista"/>
 <html>
     <jsp:include page="/static/head.jsp">
         <jsp:param name="title" value="Lista de Jugadores"/>
@@ -32,7 +32,7 @@
                         <th>SELECCION</th>
                     </thead>
                     <%
-                        for (Jugador j : listarJugadores) {
+                        for (Jugador j : lista) {
                     %>
                     <tr>
                         <td><%=j.getIdJugador()%>
@@ -43,12 +43,15 @@
                         </td>
                         <td><%=j.getPosicion()%>
                         </td>
+                        <td><%=j.getClub()%>
+                        </td>
                         <td><%=j.getSeleccion().getNombre()%>
                         </td>
                     </tr>
                     <%
                         }
                     %>
+
                 </table>
             </div>
 

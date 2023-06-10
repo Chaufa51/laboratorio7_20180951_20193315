@@ -7,6 +7,7 @@ public class Jugador {
     private int edad;
     private String posicion;
     private String club;
+    private int idSeleccion; // tal vez lo use luego
     private Seleccion seleccion;
 
     // getters and setters
@@ -57,6 +58,15 @@ public class Jugador {
     public void setSeleccion(Seleccion seleccion) {
         this.seleccion = seleccion;
     }
+
+    public int getIdSeleccion() {
+        return idSeleccion;
+    }
+
+    public void setIdSeleccion(int idSeleccion) {
+        this.idSeleccion = idSeleccion;
+    }
+
 
     //constructores
 
