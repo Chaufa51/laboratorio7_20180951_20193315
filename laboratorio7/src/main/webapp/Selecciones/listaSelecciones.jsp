@@ -64,7 +64,8 @@
         <td class="info-td"><!-- Espacio reservado para información --></td>
         <td class="button-td"><!-- Botón Borrar -->
           <div class="button-container">
-            <a onclick="return confirm('¿Está seguro de borrar?')" class="btn btn-danger m-1" href="#">Borrar</a>
+            <a onclick="return confirm('¿Está seguro de borrar?')" class="btn btn-danger m-1"
+               href="<%=request.getContextPath()%>/SeleccionesServlet?action=borrar&id=<%=s.getIdSeleccion()%>">Borrar</a>
           </div>
         </td>
       </tr>

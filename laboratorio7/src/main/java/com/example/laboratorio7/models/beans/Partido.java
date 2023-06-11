@@ -8,6 +8,10 @@ public class Partido {
     private String fecha;
     private int numeroJornada;
 
+    public Partido() {
+
+    }
+
     //getters and setters
 
     public int getIdPartido() {

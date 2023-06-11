@@ -5,6 +5,7 @@ import com.example.laboratorio7.models.beans.Jugador;
 import com.example.laboratorio7.models.beans.Seleccion;
 import com.example.laboratorio7.models.daos.EstadiosDaos;
 import com.example.laboratorio7.models.daos.JugadoresDaos;
+import com.example.laboratorio7.models.daos.PartidoDao;
 import com.example.laboratorio7.models.daos.SeleccionesDaos;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -18,6 +19,7 @@ import java.io.IOException;
 import java.util.regex.Pattern;
 
 @WebServlet(name = "SeleccionesServlet", value = "/listarSelecciones")
+
 public class SeleccionesServlet extends HttpServlet {
 
     @Override
@@ -25,6 +27,8 @@ public class SeleccionesServlet extends HttpServlet {
         response.setContentType("text/html");
 
         SeleccionesDaos seleccionesDaos = new SeleccionesDaos();
+        PartidoDao partidoDao = new PartidoDao();
+
 
         String action = request.getParameter("a") == null ? "listarSelecciones" : request.getParameter("a");
 
@@ -42,18 +46,48 @@ public class SeleccionesServlet extends HttpServlet {
                 request.setAttribute("lista",estadiosDaos.listaEstadios());
                 request.getRequestDispatcher("Selecciones/seleccionNuevo.jsp").forward(request, response);
                 break;
+
+            case "borrar":
+                if (request.getParameter("id") != null) {
+                    String idSeleccionString = request.getParameter("id");
+                    int idSeleccion = 0;
+                    try {
+                        idSeleccion = Integer.parseInt(idSeleccionString);
+                    } catch (NumberFormatException ex) {
+                        response.sendRedirect("SeleccionesServlet");
+                    }
+
+                    Seleccion sel = seleccionesDaos.obtenerSeleccion(idSeleccion);
+                    if (sel != null) {
+                        seleccionesDaos.borrarSeleccion(idSeleccion);
+                    }
+                }
+                response.sendRedirect("SeleccionesServlet");
+                break;
+
+//            case "borrar":
+//                if (request.getParameter("id") != null) {
+//                    String seleccionIdString = request.getParameter("id");
+//                    int seleccionId = 0;
+//                    try {
+//                        seleccionId = Integer.parseInt(seleccionIdString);
+//                    } catch (NumberFormatException ex) {
+//                        response.sendRedirect("SeleccionServlet");
+//                        return; // Importante: retorna después de redireccionar para evitar que se ejecute el resto del código
+//                    }
+//                    if (partidoDao.verificarSeleccionEnPartidos(seleccionId)) {
+//                        // La selección está asociada a partidos, no se puede borrar
+//                        response.sendRedirect("SeleccionServlet");
+//                        return; // Retorna después de redireccionar para evitar que se ejecute el resto del código
+//                    }
+//                    seleccionesDaos.borrarSeleccion(seleccionId);
+//                }
+//                response.sendRedirect("SeleccionesServlet");
+//                break;
         }
-
-
-
     }
 
-
     @Override
-
-
-// ...
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         SeleccionesDaos seleccionesDaos = new SeleccionesDaos();
 
@@ -78,7 +112,6 @@ public class SeleccionesServlet extends HttpServlet {
                     }
                 }
             }
-
             if (noContinuar) {
                 seleccionesDaos.nuevaSeleccion(seleccion);
                 response.sendRedirect(request.getContextPath() + "/listarSelecciones");
@@ -89,7 +122,6 @@ public class SeleccionesServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/listarSelecciones?a=agregarSeleccion");
         }
     }
-
     public Seleccion parseSeleccion(HttpServletRequest request){
         Seleccion seleccion = new Seleccion();
 
@@ -98,7 +130,6 @@ public class SeleccionesServlet extends HttpServlet {
         Estadio estadio = new Estadio();
         estadio.setNombre(request.getParameter("estadios"));
         seleccion.setEstadio(estadio);
-
 
         return seleccion;
     }
