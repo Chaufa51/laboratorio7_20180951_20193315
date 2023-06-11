@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
 import java.io.IOException;
 import java.util.regex.Pattern;
 
-@WebServlet(name = "SeleccionesServlet", value = "/listarSelecciones")
+@WebServlet(name = "SeleccionesServlet", value = {"/listarSelecciones","/SeleccionesServlet"}) //(name = "EmployeeServlet", value = {"/EmployeeServlet","/EServlet","/empleados"})
 
 public class SeleccionesServlet extends HttpServlet {
 
@@ -47,43 +47,32 @@ public class SeleccionesServlet extends HttpServlet {
                 request.getRequestDispatcher("Selecciones/seleccionNuevo.jsp").forward(request, response);
                 break;
 
+//            case "borrar":    //sin validacion
+//                if (request.getParameter("id") != null) {
+//                    int idSeleccion = Integer.parseInt(request.getParameter("id"));
+//                    seleccionesDaos.borrarSeleccion(idSeleccion);
+//                }
+//                response.sendRedirect(request.getContextPath() + "/SeleccionesServlet");
+//            break;
             case "borrar":
                 if (request.getParameter("id") != null) {
-                    String idSeleccionString = request.getParameter("id");
-                    int idSeleccion = 0;
+                    String seleccionIdString = request.getParameter("id");
+                    int seleccionId = 0;
                     try {
-                        idSeleccion = Integer.parseInt(idSeleccionString);
+                        seleccionId = Integer.parseInt(seleccionIdString);
                     } catch (NumberFormatException ex) {
-                        response.sendRedirect("SeleccionesServlet");
+                        response.sendRedirect("listarSelecciones");
+                        return;
                     }
-
-                    Seleccion sel = seleccionesDaos.obtenerSeleccion(idSeleccion);
-                    if (sel != null) {
-                        seleccionesDaos.borrarSeleccion(idSeleccion);
+                    if (partidoDao.verificarSeleccionEnPartidos(seleccionId)) {
+                        // La selección está asociada a partidos, no se puede borrar
+                        response.sendRedirect("/listarSelecciones");
+                        return;
                     }
+                    seleccionesDaos.borrarSeleccion(seleccionId);
                 }
-                response.sendRedirect("SeleccionesServlet");
+                response.sendRedirect(request.getContextPath() + "/SeleccionesServlet");
                 break;
-
-//            case "borrar":
-//                if (request.getParameter("id") != null) {
-//                    String seleccionIdString = request.getParameter("id");
-//                    int seleccionId = 0;
-//                    try {
-//                        seleccionId = Integer.parseInt(seleccionIdString);
-//                    } catch (NumberFormatException ex) {
-//                        response.sendRedirect("SeleccionServlet");
-//                        return; // Importante: retorna después de redireccionar para evitar que se ejecute el resto del código
-//                    }
-//                    if (partidoDao.verificarSeleccionEnPartidos(seleccionId)) {
-//                        // La selección está asociada a partidos, no se puede borrar
-//                        response.sendRedirect("SeleccionServlet");
-//                        return; // Retorna después de redireccionar para evitar que se ejecute el resto del código
-//                    }
-//                    seleccionesDaos.borrarSeleccion(seleccionId);
-//                }
-//                response.sendRedirect("SeleccionesServlet");
-//                break;
         }
     }
 

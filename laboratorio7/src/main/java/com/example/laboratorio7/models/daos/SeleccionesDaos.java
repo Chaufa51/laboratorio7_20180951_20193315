@@ -118,7 +118,7 @@ public class SeleccionesDaos extends BaseDaos {
     public Seleccion obtenerSeleccion(int idSeleccion) {
         Seleccion seleccion = null;
 
-        String sql = "DELETE FROM seleccion WHERE idSeleccion = ?;";
+        String sql = "SELECT FROM seleccion WHERE idSeleccion = ?;";
 
         try (Connection conn = getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {

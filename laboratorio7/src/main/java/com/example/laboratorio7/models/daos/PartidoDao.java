@@ -48,7 +48,7 @@ public class PartidoDao extends BaseDaos{
 
     public boolean verificarSeleccionEnPartidos(int seleccionId) {
         // Realiza la consulta en la base de datos
-        String sql = "SELECT COUNT(*) FROM partidos WHERE seleccionLocal = ? OR seleccionVisitante = ?";
+        String sql = "SELECT COUNT(*) FROM partido WHERE seleccionLocal = ? OR seleccionVisitante = ?";
         try (Connection connection = getConnection();
              PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setInt(1, seleccionId);
@@ -56,7 +56,7 @@ public class PartidoDao extends BaseDaos{
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
                     int count = rs.getInt(1);
-                    return count > 0; // Retorna true si se encontraron partidos, false en caso contrario
+                    return count > 0; // true si hay al menos 1 partido
                 }
             }
         } catch (SQLException ex) {
