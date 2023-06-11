@@ -7,11 +7,11 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.example.laboratorio7.models.beans.Seleccion" %>
-<%@ page import="com.example.laboratorio7.models.beans.Seleccion" %>
-<jsp:useBean id="lista" type="java.util.ArrayList<com.example.laboratorio7.models.beans.Seleccion>" scope="request"/>
+<%@ page import="com.example.laboratorio7.models.beans.Estadio" %>
+<jsp:useBean id="lista" type="java.util.ArrayList<com.example.laboratorio7.models.beans.Estadio>" scope="request"/>
 <html>
 <jsp:include page="/static/head.jsp">
-  <jsp:param name="title" value="Lista de Jugadores"/>
+  <jsp:param name="title" value="Lista de Selecciones"/>
 </jsp:include>
 <body>
 <div class='container'>
@@ -20,39 +20,31 @@
   </jsp:include>
   <div class="pb-5 pt-4 px-3 titlecolor d-flex justify-content-between align-items-center">
     <div class="col-lg-10">
-      <h1 class='text-light'>Jugador Nuevo</h1>
+      <h1 class='text-light'>Registrar seleccion</h1>
     </div>
   </div>
   <div class="tabla">
-    <form method="POST" action="<%=request.getContextPath()%>/listarJugadores?a=agregarJugador">
+    <form method="POST" action="<%=request.getContextPath()%>/listarSelecciones?a=agregarSeleccion">
       <div class="mb-3">
-        <label class='text-light' for="nombre">Nombre</label>
-        <input type="text" class="form-control" name="nombre" id="nombre">
+        <label class='text-light' for="seleccion">Seleccion</label>
+        <input type="text" class="form-control" name="seleccion" id="seleccion">
       </div>
       <div class="mb-3">
-        <label class='text-light' for="edad">Edad</label>
-        <input type="text" class="form-control" name="edad" id="edad">
+        <label class='text-light' for="tecnico">Tecnico</label>
+        <input type="text" class="form-control" name="tecnico" id="tecnico">
       </div>
       <div class="mb-3">
-        <label class='text-light' for="posicion">Posicion</label>
-        <input type="text" class="form-control" name="posicion" id="posicion">
-      </div>
-      <div class="mb-3">
-        <label class='text-light' for="club">Club</label>
-        <input type="text" class="form-control" name="club" id="club">
-      </div>
-      <div class="mb-3">
-        <label class='text-light' for="selecciones">Selecciones</label>
-        <select class="form-select" name="selecciones" id="selecciones">
-          <% for (Seleccion s : lista) { %>
-          <option value="<%=s.getIdSeleccion()%>">
-            <%=s.getNombre()%>
+        <label class='text-light' for="estadios">Estadios</label>
+        <select class="form-select" name="estadios" id="estadios">
+          <% for (Estadio e : lista) { %>
+          <option value="<%=e.getIdEstadio()%>">
+            <%=e.getNombre()%>
           </option>
           <% } %>
         </select>
       </div>
-      <a class="btn btn-danger" href="<%=request.getContextPath()%>/listarJugadores">Cancelar</a>
-      <button type="submit" class="btn btn-light">Guardar Jugador</button>
+      <a class="btn btn-danger" href="<%=request.getContextPath()%>/listarSelecciones">Cancelar</a>
+      <button type="submit" class="btn btn-light">Guardar seleccion</button>
     </form>
   </div>
 </div>

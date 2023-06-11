@@ -1,6 +1,8 @@
 package com.example.laboratorio7.controllers;
 
+import com.example.laboratorio7.models.beans.Estadio;
 import com.example.laboratorio7.models.beans.Jugador;
+import com.example.laboratorio7.models.beans.Seleccion;
 import com.example.laboratorio7.models.daos.EstadiosDaos;
 import com.example.laboratorio7.models.daos.JugadoresDaos;
 import com.example.laboratorio7.models.daos.SeleccionesDaos;
@@ -36,7 +38,7 @@ public class SeleccionesServlet extends HttpServlet {
                 EstadiosDaos estadiosDaos = new EstadiosDaos();
 
                 request.setAttribute("lista",estadiosDaos.listaEstadios());
-                request.getRequestDispatcher("Seleccion/seleccionNuevo.jsp").forward(request, response);
+                request.getRequestDispatcher("Selecciones/seleccionNuevo.jsp").forward(request, response);
                 break;
         }
 
@@ -47,7 +49,41 @@ public class SeleccionesServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        SeleccionesDaos seleccionesDaos = new SeleccionesDaos();
 
+        Seleccion seleccion = parseSeleccion(request);
 
+        boolean noContinuar = true;
+        //no
+        if(seleccion != null){
+            for(Seleccion nuevaSeleccion : seleccionesDaos.listaSeleccion()){
+                if ((seleccion.getNombre().equals(nuevaSeleccion.getNombre())) && ((seleccion.getTecnico()) == (nuevaSeleccion.getTecnico()))){
+                    noContinuar=false;
+                } else if (seleccion.getNombre().isEmpty() || seleccion.getTecnico().isEmpty()) {
+                    noContinuar=false;
+                }
+            }
+            if(noContinuar){
+                seleccionesDaos.nuevaSeleccion(seleccion);
+                response.sendRedirect(request.getContextPath() + "/listarSelecciones");
+            }else{
+                response.sendRedirect(request.getContextPath() + "/listarSelecciones?a=agregarSeleccion");
+            }
+        }else{
+            response.sendRedirect(request.getContextPath() + "/listarSelecciones?a=agregarSeleccion");
+        }
     }
+    public Seleccion parseSeleccion(HttpServletRequest request){
+        Seleccion seleccion = new Seleccion();
+
+        seleccion.setNombre(request.getParameter("seleccion"));
+        seleccion.setTecnico(request.getParameter("tecnico"));
+        Estadio estadio = new Estadio();
+        estadio.setNombre(request.getParameter("estadios"));
+        seleccion.setEstadio(estadio);
+
+
+        return seleccion;
+    }
+
 }

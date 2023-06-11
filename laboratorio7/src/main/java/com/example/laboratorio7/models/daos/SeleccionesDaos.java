@@ -89,9 +89,8 @@ public class SeleccionesDaos extends BaseDaos {
         return  lista;
     }
 
-    //sin validar aun
     public void nuevaSeleccion(Seleccion seleccion){
-        String sql ="INSERT into seleccion (nombre,tecnico,estadio)"+
+        String sql ="INSERT into seleccion (nombre,tecnico,estadio_idEstadio)"+
                 "values (?,?,?)";
 
         try(Connection connection = getConnection();

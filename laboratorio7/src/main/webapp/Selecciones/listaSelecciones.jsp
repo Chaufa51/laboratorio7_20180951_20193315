@@ -25,7 +25,7 @@
     </div>
 
     <div class="col-lg-6">
-      <a class="btn btn-warning" href="<%=request.getContextPath()%>/listarJugadores?a=agregarJugador">Registrar selecciones</a>
+      <a class="btn btn-warning" href="<%=request.getContextPath()%>/listarSelecciones?a=agregarSeleccion">Registrar selecciones</a>
     </div>
   </div>
 
