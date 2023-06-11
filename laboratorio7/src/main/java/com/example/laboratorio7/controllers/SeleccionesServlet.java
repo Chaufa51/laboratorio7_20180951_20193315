@@ -12,8 +12,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.regex.Pattern;
 
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 @WebServlet(name = "SeleccionesServlet", value = "/listarSelecciones")
 public class SeleccionesServlet extends HttpServlet {
@@ -48,31 +50,46 @@ public class SeleccionesServlet extends HttpServlet {
 
 
     @Override
+
+
+// ...
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         SeleccionesDaos seleccionesDaos = new SeleccionesDaos();
 
         Seleccion seleccion = parseSeleccion(request);
 
         boolean noContinuar = true;
-        //no
-        if(seleccion != null){
-            for(Seleccion nuevaSeleccion : seleccionesDaos.listaSeleccion()){
-                if ((seleccion.getNombre().equals(nuevaSeleccion.getNombre())) && ((seleccion.getTecnico()) == (nuevaSeleccion.getTecnico()))){
-                    noContinuar=false;
-                } else if (seleccion.getNombre().isEmpty() || seleccion.getTecnico().isEmpty()) {
-                    noContinuar=false;
+
+        if (seleccion != null) {
+            String seleccionNombre = seleccion.getNombre();
+            String tecnicoNombre = seleccion.getTecnico();
+
+            // Validación de caracteres alfabéticos
+            Pattern pattern = Pattern.compile("^[a-zA-Z]+$");
+
+            if (!pattern.matcher(seleccionNombre).matches() || !pattern.matcher(tecnicoNombre).matches()) {
+                noContinuar = false;
+            } else {
+                for (Seleccion nuevaSeleccion : seleccionesDaos.listaSeleccion()) {
+                    if (seleccionNombre.equals(nuevaSeleccion.getNombre()) && tecnicoNombre.equals(nuevaSeleccion.getTecnico())) {
+                        noContinuar = false;
+                        break;
+                    }
                 }
             }
-            if(noContinuar){
+
+            if (noContinuar) {
                 seleccionesDaos.nuevaSeleccion(seleccion);
                 response.sendRedirect(request.getContextPath() + "/listarSelecciones");
-            }else{
+            } else {
                 response.sendRedirect(request.getContextPath() + "/listarSelecciones?a=agregarSeleccion");
             }
-        }else{
+        } else {
             response.sendRedirect(request.getContextPath() + "/listarSelecciones?a=agregarSeleccion");
         }
     }
+
     public Seleccion parseSeleccion(HttpServletRequest request){
         Seleccion seleccion = new Seleccion();
 
