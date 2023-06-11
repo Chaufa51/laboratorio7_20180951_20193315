@@ -18,7 +18,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link <%=request.getParameter("page").equals("selecciones")? "active": "" %>" href="<%=request.getContextPath()%>/???">Selecciones</a>
+                <a class="nav-link <%=request.getParameter("page").equals("selecciones")? "active": "" %>" href="<%=request.getContextPath()%>/listarSelecciones">Selecciones</a>
             </li>
         </ul>
     </div>

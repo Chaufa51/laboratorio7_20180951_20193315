@@ -45,7 +45,7 @@ public class Estadio {
     //constructores
 
 
-    public Estadio(int idEstadio, String nombre, String provincia, String club) {
+    public Estadio() {
         this.idEstadio = idEstadio;
         this.nombre = nombre;
         this.provincia = provincia;
